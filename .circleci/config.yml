@@ -34,13 +34,10 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run:
-          name: "What was my custom environment variable?"
-          command: echo ${GITHUB_USR}, ${GITHUB_PWD}
-      - run: mvn -X dependency:resolve-plugins -s .circleci/settings.xml
+      - run: mvn dependency:resolve-plugins -s .circleci/settings.xml
       - run: 
           name: Analyze on SonarCloud
-          command: mvn -X verify sonar:sonar -Dsonar.projectKey=mariangolea_bankparsers.csv -s .circleci/settings.xml
+          command: mvn verify sonar:sonar -Dsonar.projectKey=mariangolea_bankparsers.csv -s .circleci/settings.xml
 
       - save_cache:
           paths:
