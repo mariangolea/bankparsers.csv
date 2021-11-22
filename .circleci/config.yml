@@ -34,7 +34,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: mvn dependency:go-offline
+      #- run: mvn dependency:go-offline Disabled to allow pulling github package
       - run: 
           name: Analyze on SonarCloud
           command: mvn verify sonar:sonar -Dsonar.projectKey=mariangolea_bankparsers.csv
