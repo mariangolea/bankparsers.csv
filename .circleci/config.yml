@@ -40,7 +40,7 @@ jobs:
       - run: mvn -X dependency:resolve-plugins -s .circleci/settings.xml
       - run: 
           name: Analyze on SonarCloud
-          command: mvn verify sonar:sonar -Dsonar.projectKey=mariangolea_bankparsers.csv
+          command: mvn -X verify sonar:sonar -Dsonar.projectKey=mariangolea_bankparsers.csv -s .circleci/settings.xml
 
       - save_cache:
           paths:
