@@ -25,8 +25,7 @@ public abstract class AbstractCSVBankParser extends AbstractBankParser {
 			if (!mandatoryChecks(record)) {
 				return null;
 			}
-		} catch (IOException ex) {
-		}
+		} catch (IOException ex) {}
 
 		return record;
 	}
