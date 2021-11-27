@@ -14,10 +14,10 @@ import org.junit.Rule;
 import org.junit.jupiter.api.Test;
 import org.junit.rules.TemporaryFolder;
 import org.mariangolea.fintrack.bank.Utilities;
-import org.mariangolea.fintrack.bank.parser.api.BankParserUtils;
-import org.mariangolea.fintrack.bank.parser.api.ParseResponse;
+import org.mariangolea.fintrack.bank.parser.BankParserUtils;
+import org.mariangolea.fintrack.bank.parser.ParseResponse;
 import org.mariangolea.fintrack.bank.parser.csv.ing.INGParser;
-import org.mariangolea.fintrack.bank.transaction.api.BankTransaction;
+import org.mariangolea.fintrack.bank.transaction.BankTransactionInterface;
 
 public class INGParserTest extends INGParser{
 
@@ -74,7 +74,7 @@ public class INGParserTest extends INGParser{
         List<String> impropper = new ArrayList<>();
         impropper.add("12 septembrie 2018,,,Cumparare POS,,\"\",");
         
-        BankTransaction trans = parseTransaction(impropper);
+        BankTransactionInterface trans = parseTransaction(impropper);
         assertTrue(trans == null);
         
         impropper.clear();

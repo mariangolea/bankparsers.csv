@@ -19,7 +19,8 @@ import org.apache.commons.csv.CSVFormat;
 import org.junit.rules.TemporaryFolder;
 import org.mariangolea.fintrack.bank.parser.csv.bancatransilvania.BTParser;
 import org.mariangolea.fintrack.bank.parser.csv.ing.INGParser;
-import org.mariangolea.fintrack.bank.transaction.api.BankTransaction;
+import org.mariangolea.fintrack.bank.transaction.BankTransactionInterface;
+import org.mariangolea.fintrack.bank.transaction.CsvBankTransaction;
 
 public class Utilities {
 
@@ -64,8 +65,8 @@ public class Utilities {
         return texts.toArray(new String[texts.size()]);
     }
 
-    public static Collection<BankTransaction> constructMockDefaultTransactionsForCategorizer() {
-        Collection<BankTransaction> transactions = new ArrayList<>();
+    public static Collection<BankTransactionInterface> constructMockDefaultTransactionsForCategorizer() {
+        Collection<BankTransactionInterface> transactions = new ArrayList<>();
 
         transactions.add(createTransaction(createDate(6, 2016), BigDecimal.ZERO, BigDecimal.ONE, "  Carrefour SRL  Romania"));
         transactions.add(createTransaction(createDate(1, 2017), BigDecimal.ZERO, BigDecimal.ONE, "Auchan Romania SRL"));
@@ -97,8 +98,8 @@ public class Utilities {
         return cal.getTime();
     }
 
-    public static BankTransaction createTransaction(final Date completed, final BigDecimal credit, final BigDecimal debit, final String description) {
-        return new BankTransaction(completed, completed, credit, debit, description, Arrays.asList("one", "two"));
+    public static BankTransactionInterface createTransaction(final Date completed, final BigDecimal credit, final BigDecimal debit, final String description) {
+        return new CsvBankTransaction(completed, completed, credit, debit, description, Arrays.asList("one", "two"));
     }
 
     public File writeCSVFile(File csv, final String... records) {

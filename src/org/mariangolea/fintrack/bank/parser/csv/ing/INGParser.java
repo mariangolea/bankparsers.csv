@@ -12,7 +12,8 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.mariangolea.fintrack.bank.parser.csv.AbstractCSVBankParser;
-import org.mariangolea.fintrack.bank.transaction.api.BankTransaction;
+import org.mariangolea.fintrack.bank.transaction.BankTransactionInterface;
+import org.mariangolea.fintrack.bank.transaction.CsvBankTransaction;
 
 public class INGParser extends AbstractCSVBankParser {
 
@@ -52,7 +53,7 @@ public class INGParser extends AbstractCSVBankParser {
     }
 
     @Override
-    public BankTransaction parseTransaction(List<String> toConsume) {
+    public BankTransactionInterface parseTransaction(List<String> toConsume) {
         Objects.requireNonNull(toConsume);
         CSVRecord record = parseSingleLine(toConsume.get(0));
         if (record == null) {
@@ -77,6 +78,6 @@ public class INGParser extends AbstractCSVBankParser {
                 }
             }
         }
-        return new BankTransaction(completedDate, completedDate, creditAmount.abs(), debitAmount.abs(), desc + details.toString(), toConsume);
+        return new CsvBankTransaction(completedDate, completedDate, creditAmount.abs(), debitAmount.abs(), desc + details.toString(), toConsume);
     }
 }

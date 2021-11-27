@@ -8,8 +8,8 @@ import java.util.List;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.mariangolea.fintrack.bank.parser.api.AbstractBankParser;
-import org.mariangolea.fintrack.bank.parser.api.Bank;
+import org.mariangolea.fintrack.bank.Bank;
+import org.mariangolea.fintrack.bank.parser.AbstractBankParser;
 
 public abstract class AbstractCSVBankParser extends AbstractBankParser {
 	public AbstractCSVBankParser(Bank bank) {

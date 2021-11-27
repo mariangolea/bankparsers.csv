@@ -4,8 +4,8 @@ package org.mariangolea.fintrack.bank.parser.csv.ing;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 
-import org.mariangolea.fintrack.bank.parser.api.AbstractBankParser;
-import org.mariangolea.fintrack.bank.parser.api.Bank;
+import org.mariangolea.fintrack.bank.Bank;
+import org.mariangolea.fintrack.bank.parser.AbstractBankParser;
 
 class ING extends Bank {
 

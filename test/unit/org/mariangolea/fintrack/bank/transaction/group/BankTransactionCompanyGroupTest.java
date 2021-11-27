@@ -1,4 +1,4 @@
-package org.mariangolea.fintrack.bank.transaction.csv;
+package org.mariangolea.fintrack.bank.transaction.group;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -7,13 +7,15 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.junit.jupiter.api.Test;
-import org.mariangolea.fintrack.bank.transaction.api.BankTransaction;
+import org.mariangolea.fintrack.bank.transaction.BankTransactionInterface;
+import org.mariangolea.fintrack.bank.transaction.BankTransactionTest;
+import org.mariangolea.fintrack.bank.transaction.group.BankTransactionCompanyGroup;
 
 public class BankTransactionCompanyGroupTest extends BankTransactionTest {
 
     @Test
     public void testAdd() {
-        BankTransaction[] legal = createTestTransactions();
+    	BankTransactionInterface[] legal = createTestTransactions();
         Extension firstGroup = new Extension("description");
         firstGroup.addTransaction(legal[0]);
         firstGroup.addTransactions(Arrays.asList(legal[1]));
@@ -33,11 +35,11 @@ public class BankTransactionCompanyGroupTest extends BankTransactionTest {
 
     @Test
     public void testHashEquals() {
-        BankTransaction[] legal = createTestTransactions();
+    	BankTransactionInterface[] legal = createTestTransactions();
         Extension firstGroup = new Extension("description");
         firstGroup.addTransactions(Arrays.asList(legal));
 
-        BankTransaction[] legalCloned = createTestTransactions();
+        BankTransactionInterface[] legalCloned = createTestTransactions();
         Extension secondGroup = new Extension("description");
         secondGroup.addTransactions(Arrays.asList(legalCloned));
 
@@ -52,12 +54,12 @@ public class BankTransactionCompanyGroupTest extends BankTransactionTest {
         }
 
         @Override
-        protected void addTransactions(Collection<BankTransaction> parsedTransactions) {
+        protected void addTransactions(Collection<BankTransactionInterface> parsedTransactions) {
             super.addTransactions(parsedTransactions);
         }
 
         @Override
-        protected void addTransaction(BankTransaction parsedTransaction) {
+        protected void addTransaction(BankTransactionInterface parsedTransaction) {
             super.addTransaction(parsedTransaction);
         }
     }

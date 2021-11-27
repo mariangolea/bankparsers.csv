@@ -1,11 +1,12 @@
-package org.mariangolea.fintrack.bank.transaction.csv;
+package org.mariangolea.fintrack.bank.transaction.group;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import org.mariangolea.fintrack.bank.transaction.api.BankTransactionGroupInterface;
+import org.mariangolea.fintrack.bank.transaction.group.BankTransactionGroupInterface;
+
 
 public class BankTransactionDefaultGroup extends BankTransactionCompanyGroup {
 

@@ -1,4 +1,4 @@
-package org.mariangolea.fintrack.bank.transaction.csv;
+package org.mariangolea.fintrack.bank.transaction.group;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -9,14 +9,15 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import org.junit.jupiter.api.Test;
-import org.mariangolea.fintrack.bank.transaction.api.BankTransaction;
-import org.mariangolea.fintrack.bank.transaction.api.BankTransactionGroupInterface;
+import org.mariangolea.fintrack.bank.transaction.BankTransactionInterface;
+import org.mariangolea.fintrack.bank.transaction.group.BankTransactionDefaultGroup;
+import org.mariangolea.fintrack.bank.transaction.group.BankTransactionGroupInterface;
 
 public class BankTransactionDefaultGroupTest extends BankTransactionCompanyGroupTest {
 
     @Test
     public void testGroup() {
-        BankTransaction[] legal = createTestTransactions();
+    	BankTransactionInterface[] legal = createTestTransactions();
         Extension defaultGroup = new Extension("description");
         defaultGroup.addTransactions(Arrays.asList(legal));
         Extension firstGroup = new Extension("description");
@@ -29,7 +30,7 @@ public class BankTransactionDefaultGroupTest extends BankTransactionCompanyGroup
 
     @Test
     public void testGetTotalAmount() {
-        BankTransaction[] legal = createTestTransactions();
+    	BankTransactionInterface[] legal = createTestTransactions();
         Extension defaultGroup = new Extension("description");
         defaultGroup.addTransactions(Arrays.asList(legal));
         Extension firstGroup = new Extension("description");
@@ -54,7 +55,7 @@ public class BankTransactionDefaultGroupTest extends BankTransactionCompanyGroup
     }
 
     private Extension createGroup() {
-        BankTransaction[] legal = createTestTransactions();
+    	BankTransactionInterface[] legal = createTestTransactions();
         Extension defaultGroup = new Extension("description");
         defaultGroup.addTransactions(Arrays.asList(legal));
         return defaultGroup;
@@ -72,12 +73,12 @@ public class BankTransactionDefaultGroupTest extends BankTransactionCompanyGroup
         }
 
         @Override
-        protected void addTransaction(BankTransaction parsedTransaction) {
+        protected void addTransaction(BankTransactionInterface parsedTransaction) {
             super.addTransaction(parsedTransaction);
         }
 
         @Override
-        protected void addTransactions(Collection<BankTransaction> parsedTransactions) {
+        protected void addTransactions(Collection<BankTransactionInterface> parsedTransactions) {
             super.addTransactions(parsedTransactions);
         }
     }

@@ -1,4 +1,4 @@
-package org.mariangolea.fintrack.bank.transaction.csv;
+package org.mariangolea.fintrack.bank.transaction.group;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -7,13 +7,13 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-import org.mariangolea.fintrack.bank.transaction.api.BankTransaction;
-import org.mariangolea.fintrack.bank.transaction.api.BankTransactionAbstractGroup;
-import org.mariangolea.fintrack.bank.transaction.api.BankTransactionGroupInterface;
+import org.mariangolea.fintrack.bank.transaction.BankTransactionInterface;
+import org.mariangolea.fintrack.bank.transaction.group.BankTransactionAbstractGroup;
+import org.mariangolea.fintrack.bank.transaction.group.BankTransactionGroupInterface;
 
 public class BankTransactionCompanyGroup extends BankTransactionAbstractGroup {
 
-    private final List<BankTransaction> list = new ArrayList<>();
+    private final List<BankTransactionInterface> list = new ArrayList<>();
     private BigDecimal amount = BigDecimal.ZERO;
 
     public BankTransactionCompanyGroup(String companyDesc) {
@@ -37,7 +37,7 @@ public class BankTransactionCompanyGroup extends BankTransactionAbstractGroup {
     }
 
     @Override
-    public List<BankTransaction> getContainedTransactions() {
+    public List<BankTransactionInterface> getContainedTransactions() {
         return Collections.unmodifiableList(list);
     }
 
@@ -59,12 +59,12 @@ public class BankTransactionCompanyGroup extends BankTransactionAbstractGroup {
         return Objects.hash(super.hashCode(), list);
     }
 
-    protected void addTransaction(final BankTransaction parsedTransaction) {
+    protected void addTransaction(final BankTransactionInterface parsedTransaction) {
         list.add(parsedTransaction);
         amount = amount.add(parsedTransaction.getCreditAmount()).subtract(parsedTransaction.getDebitAmount());
     }
 
-    protected void addTransactions(final Collection<BankTransaction> parsedTransactions) {
+    protected void addTransactions(final Collection<BankTransactionInterface> parsedTransactions) {
         parsedTransactions.forEach(transaction -> addTransaction(transaction));
     }
 

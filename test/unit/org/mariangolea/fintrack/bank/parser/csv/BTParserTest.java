@@ -10,13 +10,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.jupiter.api.Test;
 import org.junit.rules.TemporaryFolder;
 import org.mariangolea.fintrack.bank.Utilities;
-import org.mariangolea.fintrack.bank.parser.api.BankParserUtils;
-import org.mariangolea.fintrack.bank.parser.api.ParseResponse;
+import org.mariangolea.fintrack.bank.parser.BankParserUtils;
+import org.mariangolea.fintrack.bank.parser.ParseResponse;
 import org.mariangolea.fintrack.bank.parser.csv.bancatransilvania.BTParser;
 
 
